@@ -46,16 +46,18 @@
 </head>
 <body>
 <%@ page import="java.sql.*" %>
+<%@ page import="static java.lang.Thread.sleep" %>
 <%
-    request.setCharacterEncoding("utf-8");
-    response.setCharacterEncoding("utf-8");
-    String product_name = request.getParameter("product_name");
-    session.setAttribute("product_name", product_name);
-    String description = request.getParameter("description");
 
-    int price = Integer.parseInt(request.getParameter("price"));
-    String image = request.getParameter("image");
     try {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+        String product_name = request.getParameter("product_name");
+        session.setAttribute("product_name", product_name);
+        String description = request.getParameter("description");
+
+        int price = Integer.parseInt(request.getParameter("price"));
+        String image = request.getParameter("image");
         Class.forName("org.postgresql.Driver");
         Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
                 "postgres", "knigafanfikov2w8i123987");
@@ -65,11 +67,10 @@
 */
     /*int k = */
         st.executeUpdate("insert into products(product_name, price,  image,  description) values ('" + product_name + "','" + price + "','" + image + "','" + description + "')");
+    response.sendRedirect("productsForAdmin.jsp?page=1");
     }catch (Exception e) {
-    out.print(e);}
-    finally {
-
-        response.sendRedirect("productsForAdmin.jsp?page=1");
+        sleep(1000);
+        response.sendRedirect("addProduct.html");
     }
 %>
 </body>

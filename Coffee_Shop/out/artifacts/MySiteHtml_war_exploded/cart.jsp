@@ -101,8 +101,8 @@
     <div class="center clearfix">
         <div class="f-about">
             <h5 class="f-title">Контакты</h5>
-            <p>Книжный интернет-магазин "Книги.ру"
-                Электронная почта: shop@knigi.ru</p>
+            <p>Наш контактный телефон<br>
+                8(900)900-90-00</p>
         </div>
     </div>
 </div>

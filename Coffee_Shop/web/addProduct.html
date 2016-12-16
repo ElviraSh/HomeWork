@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>CoffeeShop_Добавление продукта</title>
     <link rel="stylesheet" href="css/style.css"/>
+
 </head>
 <body>
+
 <div id="wrapper">
     <div class="panel-top">
         <div class="center clearfix">
@@ -26,7 +28,7 @@
                 <input type="submit" class="submit-class-login" value="Удалить">-->
 
                 <form id="wrapper2" action="addProduct.jsp" method="post">
-                    <!--<div class="main">-->
+
                         <br>
                         <br>
                         <br>
@@ -53,13 +55,55 @@
                         <br>
 
 
-                    <!--</div>-->
-                    <input type="submit" class="submit-class-login" value="ДОБАВИТЬ">
-                </form>
+
+                    <input type="submit" class="submit-class-login" value="ДОБАВИТЬ"  onclick="validate(this.form)">
+
+                <script>
+                    function showError(container, errorMessage) {
+                        container.className = 'error';
+                        var msgElem = document.createElement('span');
+                        msgElem.className = "error-message";
+                        msgElem.innerHTML = errorMessage;
+                        container.appendChild(msgElem);
+                    }
+
+                    function resetError(container) {
+                        container.className = '';
+                        if (container.lastChild.className == "error-message") {
+                            container.removeChild(container.lastChild);
+                        }
+                    }
+
+                    function validate(form) {
+                        var elems = form.elements;
+
+                        resetError(elems.product_name.parentNode);
+                        if (!elems.product_name.value) {
+                            showError(elems.product_name.parentNode);
+                        }
+
+                        resetError(elems.price.parentNode);
+                        if (!elems.price.value) {
+                            showError(elems.price.parentNode);
+                        }
+
+                        resetError(elems.image.parentNode);
+                        if (!elems.image.value) {
+                            showError(elems.image.parentNode);
+                        }
+
+                        resetError(elems.description.parentNode);
+                        if (!elems.description.value) {
+                            showError(elems.description.parentNode, 'ПРОВЕРЬТЕ И ПОВТОРИТЕ ПОПЫТКУ');
+                        }
+
+                    }
+                </script></form>
             </div>
         </div>
     </div>
 </div>
+
 <div id="footer">
     <a href="#home-link" class="home-link">&nbsp;</a>
     <div class="center clearfix">

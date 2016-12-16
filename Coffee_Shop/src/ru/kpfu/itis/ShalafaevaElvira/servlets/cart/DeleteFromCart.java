@@ -44,18 +44,22 @@ public class DeleteFromCart extends HttpServlet {
                     "<title>CoffeeShop_cart</title><link rel='stylesheet' href='css/style.css'/></head><body>" +
                     "<div id='wrapper'><div class='panel-top'><div class='center clearfix'></div></div>" +
                     "<div id='home'><div class='home-bg'>" +
-                    "<div class='center'><a href='/views/jsp/productsForUser.jsp?page=1' class='link-home'></a>" +
+                    "<div class='center'><a href='productsForUser.jsp?page=1' class='link-home'></a>" +
                     "<h2 class='title-home'>COFFEE SHOP</h2></div></div></div>" +
                     "<div class='middle clearfix center'><div class='sidebar'></div><div class='content'>" +
                     "<div class='registr'><div class='header-login'><br><br><h4>КОРЗИНА</h4><br><br><br></div>");
             HashMap<String, Integer> items = shoppingCart.getCartItems();
             out.println("<div class='cartTable'><table border='1px' width='750px'><col width='460px'><col width='145px'><col width='145px'>");
             for (String key : items.keySet()) {
-                out.println("<form action='deleteItem'><input type='hidden' name='name' value='" + key + "'><tr><td>" + key + "</td><td>" + items.get(key) + " руб.</td><td><input type='submit' class='button' value='УДАЛИТЬ'></td></tr></form>");
+                out.println("<center><form action='deleteItem'><input type='hidden' name='name' value='" + key + "'><tr><td>" + key + "</td><td>" + items.get(key) + " руб.</td><td><input type='submit' class='button' value='УДАЛИТЬ'></td></tr></form></table></div><br>");
+
+                out.println("<center><form action='sum' method='POST'>" +
+                        "<input type='submit' class='button'  value='КУПИТЬ'></form></div></div></div></div>");
             }
-            if (items.isEmpty()) {
+                if (items.isEmpty()) {
                 out.println("<div class=cartFont>Нет выбранных товаров</div>");
             }
+
             out.println("</table></div></div></div></div></div>");
             out.println("<div id=\"footer\">\n" +
                     "    <a href=\"#home-link\" class=\"home-link\">&nbsp;</a>\n" +

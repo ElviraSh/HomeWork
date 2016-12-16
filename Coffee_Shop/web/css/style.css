@@ -463,6 +463,14 @@ a, a:hover {
     -o-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
 }
+.error input,
+.error textarea {
+    border: 1px solid red;
+}
+
+.error {
+    color: red;
+}
 
 .input-class {
     width: 390px;
